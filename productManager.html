@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="show"></p>
+<input type="text" id="input">
+<input type="text" id="index" placeholder="index">
+<button onclick="display()">Display</button>
+<button onclick="add()">Add</button>
+<button onclick="edit()">Edit</button>
+<button onclick="deleteProd()">Delete</button>
+<div>
+    <input type="button" onclick="edit()" value="edit">
+</div>
+</body>
+<script>
+    let arr = ["Iphone 10", "Iphone 11 Pro max", "Iphone 15 pro max"]
+
+    function display() {
+        let result = "";
+        for (let i = 0; i < arr.length; i++) {
+            result += arr[i] + "<input type=\"button\" onclick=\"edit(" + i + ")\" value=\"edit\">" + "<br/>";
+        }
+        document.getElementById("show").innerHTML = result;
+    }
+
+    function add() {
+        let product = document.getElementById("input").value;
+        arr.push(product);
+        display();
+    }
+
+    function edit(index) {
+        let newProduct = document.getElementById("input").value;
+        arr.splice(index, 1, newProduct);
+        display();
+    }
+
+    function deleteProd(index) {
+        arr.splice(index, 1);
+        display()
+    }
+</script>
+</html>
